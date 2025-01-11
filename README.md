@@ -1,6 +1,6 @@
-# generate_tags_from_github
+# generate_tags_to_gauge
 
-githubの情報を元に正規表現を利用してgaugeで実行するためのtagを生成する
+正規表現を利用してgaugeで実行するためのtagを生成する
 
 ## Composite Action
 
