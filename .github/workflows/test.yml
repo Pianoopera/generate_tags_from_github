@@ -1,0 +1,23 @@
+name: Run Custom Action
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  run-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run custom action
+        id: run-action
+        uses: Pianoopera/generate_tags_from_github@main
+        with:
+          github_branch: feature/branch
+
+      - name: Test
+        if: ${{ steps.run-action.outputs.tags != 'branch' }}
+        run: exit 1
