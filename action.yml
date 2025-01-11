@@ -1,0 +1,32 @@
+name: "Genarate tags from GitHub"
+description: "Generate tags from GitHub"
+author: "Pianoopepa"
+inputs:
+  github_token:
+    description: "GitHub token"
+    required: true
+  github_branch:
+    description: "GitHub branch"
+    required: false
+    default: "main"
+
+outputs:
+  tags:
+    description: "Tags"
+    value: ${{ steps.tags.outputs.tags }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@4
+      with:
+        repository: ${{ github.repository }}
+        token: ${{ inputs.github_token }}
+
+    - name: OutPut tags
+      if: ${{ inputs.github_branch != 'main' }}
+      shell: bash
+      id: tags
+      run: |
+        echo "tags=$(echo ${{ inputs.github_branch }} | sed -e 's/feature\///g')" >> $GITHUB_OUTPUT
