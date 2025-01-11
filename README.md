@@ -7,7 +7,7 @@
 ```yaml
 - name: Run custom action
   id: run-action
-  uses: Pianoopera/generate_tags_from_github@main
+  uses: Pianoopera/generate_tags_to_gauge@main
   with:
     # featureを含んだブランチ名を指定
     github_branch: feature/branch

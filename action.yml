@@ -3,7 +3,7 @@ description: "Generate tags from GitHub"
 author: "Pianoopera"
 inputs:
   github_branch:
-    description: "GitHub branch"
+    description: "GitHub branch prefix is feature"
     required: false
     default: "main"
 
