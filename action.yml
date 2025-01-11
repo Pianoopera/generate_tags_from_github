@@ -1,6 +1,6 @@
 name: "Genarate tags from GitHub"
 description: "Generate tags from GitHub"
-author: "Pianoopepa"
+author: "Pianoopera"
 inputs:
   github_branch:
     description: "GitHub branch"
