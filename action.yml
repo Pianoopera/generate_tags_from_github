@@ -2,9 +2,6 @@ name: "Genarate tags from GitHub"
 description: "Generate tags from GitHub"
 author: "Pianoopepa"
 inputs:
-  github_token:
-    description: "GitHub token"
-    required: true
   github_branch:
     description: "GitHub branch"
     required: false
