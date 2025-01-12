@@ -5,18 +5,36 @@
 ## Composite Action
 
 ```yaml
+
+# branch case
 - name: Run custom action
   id: run-action
   uses: Pianoopera/generate_tags_to_gauge@main
   with:
     # featureを含んだブランチ名を指定
     github_branch: feature/branch
-    # github tag --listを受け付ける
-    github_tag: $(git tag --list)
 
 - name: Outputs
   # outputs.tagsに値を格納
   run: ${{ steps.run-action.outputs.tags }}
+```
+
+```yaml
+# fetch case
+- name: fetch the tags
+  run: |
+    git fetch --tags
+    echo "FETCHED_TAGS<<EOF" >> $GITHUB_ENV
+    echo "$(git tag -l)" >> $GITHUB_ENV
+    echo "EOF" >> $GITHUB_ENV
+
+- name: Run custom action
+  id: run-action
+  uses: Pianoopera/generate_tags_to_gauge@main
+  with:
+    # github tag --listを受け付ける
+    github_tag: $(git tag --list)
+
 ```
 
 ## Develop
