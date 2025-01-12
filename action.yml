@@ -31,7 +31,7 @@ runs:
       shell: bash
       id: tag
       run: |
-        fmt_tags=$(echo "${{ inputs.github_tag }}" | sed ':a;N;$!ba;s/\n/|/g')
+        fmt_tags=$(echo "${{ inputs.github_tag }}" | sed '1{/^$/d};:a;N;$!ba;s/\n/|/g')
         echo "tags=$(echo $fmt_tags)" >> $GITHUB_OUTPUT
 
     - name: failure inputs

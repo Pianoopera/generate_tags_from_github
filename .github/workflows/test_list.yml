@@ -16,6 +16,7 @@ jobs:
         id: taglist
         run: |
           echo 'MULTILINE_INPUT<<EOF' >> $GITHUB_ENV
+          echo '' >> $GITHUB_ENV
           echo 'list1' >> $GITHUB_ENV
           echo 'list2' >> $GITHUB_ENV
           echo 'list3' >> $GITHUB_ENV
