@@ -33,7 +33,7 @@
   uses: Pianoopera/generate_tags_to_gauge@main
   with:
     # github tag --listを受け付ける
-    github_tag: $(git tag --list)
+    github_tag: ${{ env.FETCHED_TAGS }}
 
 ```
 
