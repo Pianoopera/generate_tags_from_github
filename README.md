@@ -11,10 +11,12 @@
   with:
     # featureを含んだブランチ名を指定
     github_branch: feature/branch
+    # github tag --listを受け付ける
+    github_tag: $(git tag --list)
 
 - name: Outputs
   # outputs.tagsに値を格納
-  run: ${{ steps.run-action.outputs.tags != 'branch' }}
+  run: ${{ steps.run-action.outputs.tags }}
 ```
 
 ## Develop
@@ -22,5 +24,6 @@
 [act](https://github.com/nektos/act)でローカル環境でもActionsを実行可能
 
 ```shell
-act pull_request
+# ファイル指定
+act pull_request -W .github/workflows/test_branch.yml
 ```

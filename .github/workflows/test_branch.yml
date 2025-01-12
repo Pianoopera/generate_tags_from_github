@@ -14,10 +14,12 @@ jobs:
 
       - name: Run custom action
         id: run-action
-        uses: Pianoopera/generate_tags_from_github@main
+        uses: ./
         with:
           github_branch: feature/branch
 
-      - name: Test
+      - name: Test Success
         if: ${{ steps.run-action.outputs.tags != 'branch' }}
-        run: exit 1
+        run: |
+          echo "tags: ${{ steps.run-action.outputs.tags }}"
+          exit 1
