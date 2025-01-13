@@ -39,7 +39,7 @@
     github_tag: ${{ env.FETCHED_TAGS }}
 
 - name: Outputs
-  run: ${{ steps.run-action.outputs.tags }} # list1|list2|list3
+  run: ${{ steps.run-action.outputs.tags }} # output is list1|list2|list3
 
 ```
 
