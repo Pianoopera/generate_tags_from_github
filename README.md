@@ -16,7 +16,7 @@
 
 - name: Outputs
   # outputs.tagsに値を格納
-  run: ${{ steps.run-action.outputs.tags }}
+  run: ${{ steps.run-action.outputs.tags }} # outputs is branch
 ```
 
 ```yaml
@@ -26,6 +26,9 @@
     git fetch --tags
     echo "FETCHED_TAGS<<EOF" >> $GITHUB_ENV
     echo "$(git tag -l)" >> $GITHUB_ENV
+    # list1
+    # list2
+    # list3
     echo "EOF" >> $GITHUB_ENV
 
 - name: Run custom action
@@ -34,6 +37,9 @@
   with:
     # github tag --listを受け付ける
     github_tag: ${{ env.FETCHED_TAGS }}
+
+- name: Outputs
+  run: ${{ steps.run-action.outputs.tags }} # list1|list2|list3
 
 ```
 
